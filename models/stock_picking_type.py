@@ -6,12 +6,12 @@ class PickingType(models.Model):
     code = fields.Selection(selection_add=[
         ('manufacturing', 'Manufacturing'),
         ('returns', 'Returns')
-    ], ondelete='cascade')
+    ], ondelete={'code':'cascade'})
 
     return_type = fields.Selection([
         ('none', 'None'),
         ('return', 'Return'),
         ('refund', 'Refund'),
-    ], string='Return Type', default='none', ondelete='cascade')
+    ], string='Return Type', default='none', ondelete={'return_type':'cascade'})
 
-    show_reserved_qty = fields.Boolean(string='Show Reserved Quantity', default=False, ondelete='cascade')
+    show_reserved_qty = fields.Boolean(string='Show Reserved Quantity', default=False, ondelete={'show_reserved_qty':'cascade'})
